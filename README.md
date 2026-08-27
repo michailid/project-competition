@@ -1,3 +1,5 @@
+This project is based on the tutorial _Hackathon & Project Competition App in Angular 💻 | Step-by-Step Full Project Tutorial_: https://www.youtube.com/watch?v=Y2_fH_MMNKY.
+
 # ProjectCompetition
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
