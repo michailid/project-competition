@@ -1,0 +1,120 @@
+:host {
+  --indigo: #5b57e8;
+  --violet: #8a4fd6;
+  --blue: #4f6df5;
+  --blue-dark: #3f57e0;
+  --text: #241f3d;
+  --muted: #8a8698;
+  --line: #e7e5f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+:host {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #7c79ee 0%, #8a5fdc 45%, #9b4fd4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.auth-card {
+  background: #fff;
+  width: 100%;
+  max-width: 470px;
+  border-radius: 16px;
+  padding: 2.8rem 2.6rem 2.4rem;
+  box-shadow: 0 40px 80px -30px rgba(30, 20, 70, 0.45);
+}
+
+.auth-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: var(--indigo);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.2rem;
+}
+.auth-title i {
+  font-size: 1.5rem;
+}
+
+.form-control,
+.form-select {
+  background: #fafaff;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  padding: 0.85rem 1rem;
+  font-size: 0.96rem;
+  color: var(--text);
+  margin-bottom: 1.15rem;
+}
+.form-control::placeholder {
+  color: #a8a5b8;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 3px rgba(91, 87, 232, 0.14);
+}
+.form-select {
+  color: #a8a5b8;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8698' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+.form-select:valid,
+.form-select.chosen {
+  color: var(--text);
+}
+
+.btn-register {
+  width: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.02rem;
+  border: none;
+  border-radius: 9px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.4rem;
+  box-shadow: 0 14px 28px -12px rgba(63, 87, 224, 0.55);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+.btn-register:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px -12px rgba(63, 87, 224, 0.6);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.6rem;
+  font-size: 0.94rem;
+}
+.auth-footer a {
+  color: var(--indigo);
+  font-weight: 700;
+  text-decoration: none;
+}
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2.2rem 1.6rem;
+  }
+}

@@ -1,1 +1,27 @@
-<p>register works!</p>
+<div class="auth-card">
+  <div class="auth-title"><i class="fa fa-user-plus"></i> Register</div>
+
+  <form id="registerForm" novalidate>
+    <input type="text" class="form-control" id="fullName" placeholder="Full Name" required />
+    <input type="email" class="form-control" id="email" placeholder="Email" required />
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Password"
+      required
+      minlength="6"
+    />
+    <input type="text" class="form-control" id="collegeName" placeholder="College Name" required />
+
+    <select class="form-select" id="role" required onchange="this.classList.add('chosen')">
+      <option value="" disabled selected>Select Role</option>
+      <option value="participant">Participant</option>
+      <option value="organizer">Organizer</option>
+    </select>
+
+    <button type="submit" class="btn btn-register">Register</button>
+  </form>
+
+  <div class="auth-footer">Already have an account? <a href="login.html">Login</a></div>
+</div>
