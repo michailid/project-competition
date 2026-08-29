@@ -58,9 +58,19 @@
   <div class="auth-title"><i class="fa fa-sign-in"></i> Login</div>
 
   <form id="loginForm" novalidate>
-    <input type="email" class="form-control" id="email" placeholder="Email" required />
+    <input
+      type="email"
+      [(ngModel)]="loginObj.email"
+      name="email"
+      class="form-control"
+      id="email"
+      placeholder="Email"
+      required
+    />
     <input
       type="password"
+      [(ngModel)]="loginObj.password"
+      name="password"
       class="form-control"
       id="password"
       placeholder="Password"
@@ -68,7 +78,7 @@
       minlength="6"
     />
 
-    <button type="submit" class="btn btn-login">Login</button>
+    <button type="button" class="btn btn-login" (click)="onLogin()">Login</button>
   </form>
 
   <div class="auth-footer">New user? <a (click)="toggleForm()">Register here</a></div>

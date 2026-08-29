@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class Register {
   isLoginFormVisible = signal<boolean>(false);
   http = inject(HttpClient);
+  router = inject(Router);
 
   registerObj: any = {
     fullName: '',
@@ -18,6 +20,11 @@ export class Register {
     password: '',
     collegeName: '',
     role: '',
+  };
+
+  loginObj: any = {
+    email: '',
+    password: '',
   };
 
   toggleForm() {
@@ -32,6 +39,24 @@ export class Register {
           alert('Successfully registered');
         },
         error: (error) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  onLogin() {
+    debugger;
+    this.http
+      .post('https://api.freeprojectapi.com/api/ProjectCompetition/login', this.loginObj)
+      .subscribe({
+        next: (res: any) => {
+          debugger;
+          alert('Successfully logged in');
+          localStorage.setItem('hackathonuser', JSON.stringify(res));
+          this.router.navigateByUrl('/home');
+        },
+        error: (error) => {
+          debugger;
           alert(error.error);
         },
       });
