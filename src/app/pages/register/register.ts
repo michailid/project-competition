@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LOGIN_STORAGE_KEY } from '../../constants';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +15,7 @@ export class Register {
   isLoginFormVisible = signal<boolean>(false);
   http = inject(HttpClient);
   router = inject(Router);
+  masterService = inject(Master);
 
   registerObj: any = {
     fullName: '',
@@ -45,18 +48,16 @@ export class Register {
   }
 
   onLogin() {
-    debugger;
     this.http
       .post('https://api.freeprojectapi.com/api/ProjectCompetition/login', this.loginObj)
       .subscribe({
         next: (res: any) => {
-          debugger;
           alert('Successfully logged in');
-          localStorage.setItem('hackathonuser', JSON.stringify(res));
+          localStorage.setItem(LOGIN_STORAGE_KEY, JSON.stringify(res));
           this.router.navigateByUrl('/home');
+          this.masterService.$loginDone.next();
         },
         error: (error) => {
-          debugger;
           alert(error.error);
         },
       });
