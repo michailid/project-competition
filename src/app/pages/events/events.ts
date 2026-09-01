@@ -3,6 +3,7 @@ import { CompetitionModel } from '../../model/competition';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-events',
@@ -14,38 +15,32 @@ export class Events implements OnInit {
   competitionObj: CompetitionModel = new CompetitionModel();
   http = inject(HttpClient);
   events = signal<CompetitionModel[]>([]);
+  masterService = inject(Master);
 
   ngOnInit(): void {
-    this.getAllEvents();
+    this.getAllData();
   }
 
   onSave() {
-    this.http
-      .post(
-        'https://api.freeprojectapi.com/api/ProjectCompetition/competition',
-        this.competitionObj,
-      )
-      .subscribe({
-        next: (res) => {
-          alert('Competition saved successfully');
-        },
-        error: (error) => {
-          alert('Error: ' + error.error);
-        },
-      });
+    this.masterService.onSaveCompetition(this.competitionObj).subscribe({
+      next: (res) => {
+        alert('Competition saved successfully');
+      },
+      error: (error) => {
+        alert('Error: ' + error.error);
+      },
+    });
   }
 
-  getAllEvents() {
-    this.http
-      .get('https://api.freeprojectapi.com/api/ProjectCompetition/GetAllCompetition')
-      .subscribe({
-        next: (res: any) => {
-          this.events.set(res);
-          console.log(this.events());
-        },
-        error: (error) => {
-          alert('Error: ' + error.error);
-        },
-      });
+  getAllData() {
+    this.masterService.getAllCompetitions().subscribe({
+      next: (res: any) => {
+        this.events.set(res);
+        console.log(this.events());
+      },
+      error: (error) => {
+        alert('Error: ' + error.error);
+      },
+    });
   }
 }
