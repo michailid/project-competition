@@ -1,0 +1,225 @@
+:host {
+  --blue: #4f6df5;
+  --green: #2f9e5c;
+  --gold: #f0ad2e;
+  --gold-dark: #d99a1f;
+  --red: #e0475a;
+  --red-dark: #c93a4b;
+  --text: #241f3d;
+  --muted: #8a8698;
+  --line: #e7e5f0;
+  --paper: #f7f8fc;
+}
+* {
+  box-sizing: border-box;
+}
+:host {
+  background: var(--paper);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.page-wrap {
+  /* max-width: 1200px; */
+  padding: 2rem;
+  margin: auto;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.8rem;
+  height: fit-content;
+  box-shadow: 0 2px 8px rgba(36, 31, 61, 0.03);
+}
+.panel-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+}
+.panel-title.blue {
+  color: var(--blue);
+}
+.panel-title.green {
+  color: var(--green);
+}
+.panel-title i {
+  font-size: 1.15rem;
+}
+
+/* Competition list */
+.comp-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 1rem;
+}
+.comp-item h5 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+.comp-item .desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+.comp-item .meta {
+  font-size: 0.86rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.comp-item .meta i {
+  color: var(--muted);
+  width: 14px;
+}
+.status-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.status-upcoming {
+  background: #fff3d9;
+  color: #a97a12;
+}
+.status-ongoing {
+  background: #e3f3ff;
+  color: #1568b8;
+}
+.status-completed {
+  background: #e6f6ec;
+  color: #218a4e;
+}
+
+.comp-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+.btn-edit {
+  background: var(--gold);
+  color: #3a2a03;
+  font-weight: 700;
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 7px;
+  font-size: 0.88rem;
+}
+.btn-edit:hover {
+  background: var(--gold-dark);
+  color: #3a2a03;
+}
+.btn-delete {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 7px;
+  font-size: 0.88rem;
+}
+.btn-delete:hover {
+  background: var(--red-dark);
+  color: #fff;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 2.5rem 1rem;
+  font-size: 0.92rem;
+}
+.empty-state i {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.7rem;
+  opacity: 0.5;
+}
+
+/* Form */
+.form-label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+.form-control,
+.form-select {
+  background: #fafaff;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  padding: 0.75rem 1rem;
+  font-size: 0.94rem;
+  color: var(--text);
+  margin-bottom: 1.15rem;
+}
+.form-control::placeholder {
+  color: #a8a5b8;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.14);
+}
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.btn-save {
+  width: 100%;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 9px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 12px 24px -12px rgba(79, 109, 245, 0.55);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+.btn-save:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -12px rgba(79, 109, 245, 0.6);
+}
+.btn-cancel {
+  width: 100%;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  padding: 0.6rem 1rem;
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
+.btn-cancel:hover {
+  background: var(--paper);
+  color: var(--text);
+}
+
+@media (max-width: 991px) {
+  .panel {
+    margin-bottom: 1.5rem;
+  }
+}
