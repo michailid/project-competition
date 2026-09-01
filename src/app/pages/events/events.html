@@ -4,24 +4,29 @@
     <div class="col-lg-8">
       <div class="panel">
         <div class="panel-title blue"><i class="fa fa-list-ul"></i> Competitions</div>
-        <div id="compList row">
-          <div class="comp-item col-6">
-            <h5>CodeFest 2026</h5>
-            <div class="desc">Build innovative apps in 24 hours.</div>
-            <div class="meta"><i class="fa fa-calendar"></i> 14 Sept - 16 Sept</div>
-            <div class="meta">
-              <i class="fa fa-info-circle"></i> Status:
-              <span class="status-badge status-upcoming">Upcoming</span>
+        <div id="compList" class="d-flex row gap-3">
+          @for (event of events(); track $index) {
+            <div class="comp-item col-5">
+              <h5>{{ event.title }}</h5>
+              <div class="desc">{{ event.description }}</div>
+              <div class="meta">
+                <i class="fa fa-calendar"></i> {{ event.startDate | date: 'dd MMM' }} -
+                {{ event.endDate | date: 'dd MMM' }}
+              </div>
+              <div class="meta">
+                <i class="fa fa-info-circle"></i> Status:
+                <span class="status-badge status-upcoming">{{ event.status }}</span>
+              </div>
+              <div class="comp-actions d-flex justify-content-between">
+                <button class="btn btn-edit" data-id="b705be66-bdc6-4130-9bd2-63276efb7a2e">
+                  <i class="fa fa-pencil me-1"></i> Edit
+                </button>
+                <button class="btn btn-delete" data-id="b705be66-bdc6-4130-9bd2-63276efb7a2e">
+                  <i class="fa fa-trash me-1"></i> Delete
+                </button>
+              </div>
             </div>
-            <div class="comp-actions d-flex justify-content-between">
-              <button class="btn btn-edit" data-id="b705be66-bdc6-4130-9bd2-63276efb7a2e">
-                <i class="fa fa-pencil me-1"></i> Edit
-              </button>
-              <button class="btn btn-delete" data-id="b705be66-bdc6-4130-9bd2-63276efb7a2e">
-                <i class="fa fa-trash me-1"></i> Delete
-              </button>
-            </div>
-          </div>
+          }
         </div>
       </div>
     </div>
@@ -39,6 +44,8 @@
           <label class="form-label">Title</label>
           <input
             type="text"
+            [(ngModel)]="competitionObj.title"
+            name="title"
             class="form-control"
             id="title"
             placeholder="e.g. CodeFest 2026"
@@ -48,26 +55,49 @@
           <label class="form-label">Description</label>
           <textarea
             class="form-control"
+            [(ngModel)]="competitionObj.description"
+            name="description"
             id="description"
             placeholder="What's this competition about?"
             required
           ></textarea>
 
           <label class="form-label">Start Date</label>
-          <input type="date" class="form-control" id="startDate" required />
+          <input
+            type="date"
+            [(ngModel)]="competitionObj.startDate"
+            name="startDate"
+            class="form-control"
+            id="startDate"
+            required
+          />
 
           <label class="form-label">End Date</label>
-          <input type="date" class="form-control" id="endDate" required />
+          <input
+            type="date"
+            [(ngModel)]="competitionObj.endDate"
+            name="endDate"
+            class="form-control"
+            id="endDate"
+            required
+          />
 
-          <select class="form-select" id="status" required>
+          <select
+            [(ngModel)]="competitionObj.status"
+            name="status"
+            class="form-select"
+            id="status"
+            required
+          >
             <option value="" disabled selected>Select Status</option>
             <option value="upcoming">Upcoming</option>
             <option value="ongoing">Ongoing</option>
             <option value="completed">Completed</option>
           </select>
 
-          <button type="submit" class="btn btn-save" id="saveBtn">Save Competition</button>
-          <button type="button" class="btn btn-cancel d-none" id="cancelBtn">Cancel edit</button>
+          <button type="button" (click)="onSave()" class="btn btn-save" id="saveBtn">
+            Save Competition
+          </button>
         </form>
       </div>
     </div>
