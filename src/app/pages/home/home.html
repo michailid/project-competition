@@ -38,27 +38,24 @@
     <h2 class="section-title">Upcoming Competitions</h2>
     <p class="section-sub">Get ready to innovate &amp; compete</p>
     <div class="row g-4">
-      <div class="col-md-4">
-        <div class="comp-card">
-          <h5>CodeFest 2026</h5>
-          <p>Build innovative web apps within 24 hours.</p>
-          <a href="#" class="btn btn-comp">Register</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="comp-card">
-          <h5>AI Hack 2.0</h5>
-          <p>Solve real-world problems using Machine Learning.</p>
-          <a href="#" class="btn btn-comp">Register</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="comp-card">
-          <h5>ProjectX Challenge</h5>
-          <p>Showcase your final year project to industry experts.</p>
-          <a href="#" class="btn btn-comp">Register</a>
-        </div>
-      </div>
+      @for (event of $eventList | async; track event) {
+        @if (
+          event.status == 'Open' ||
+          event.status == 'Active' ||
+          event.status == 'New' ||
+          event.status == 'Upcoming'
+        ) {
+          <div class="col-md-4">
+            <div class="comp-card">
+              <h5>{{ event.title }}</h5>
+              <p>{{ event.description }}</p>
+              <a routerLink="/project-submission/{{ event.competitionId }}" class="btn btn-comp"
+                >Register</a
+              >
+            </div>
+          </div>
+        }
+      }
     </div>
   </div>
 </section>

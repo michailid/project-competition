@@ -3,6 +3,7 @@ import { Home } from './pages/home/home';
 import { Register } from './pages/register/register';
 import { Events } from './pages/events/events';
 import { Dashboard } from './pages/dashboard/dashboard';
+import { RegisterEvent } from './pages/register-event/register-event';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: Dashboard,
+  },
+  {
+    path: 'project-submission/:id',
+    component: RegisterEvent,
   },
 ];

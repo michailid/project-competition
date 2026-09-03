@@ -1,1 +1,44 @@
-<p>register-event works!</p>
+<div class="form-card">
+  <div class="form-header"><i class="fa fa-paper-plane"></i> Project Submission</div>
+
+  <div class="form-body">
+    <form id="submissionForm" [formGroup]="submissionForm" novalidate>
+      <label class="form-label">Project Title</label>
+      <input
+        type="text"
+        formControlName="projectTitle"
+        class="form-control"
+        id="projectTitle"
+        placeholder="Enter your project title"
+        required
+      />
+      <div class="invalid-msg">Please enter a project title.</div>
+
+      <label class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        formControlName="description"
+        id="description"
+        placeholder="Describe your project..."
+        required
+      ></textarea>
+      <div class="invalid-msg">Please add a short description.</div>
+
+      <label class="form-label">GitHub Link</label>
+      <input
+        type="url"
+        formControlName="githubLink"
+        class="form-control"
+        id="githubLink"
+        placeholder="https://github.com/your-repo"
+        required
+        pattern="https?://.+"
+      />
+      <div class="invalid-msg">Please enter a valid GitHub URL.</div>
+
+      <button type="button" (click)="onSubmit()" class="btn btn-submit">
+        <i class="fa fa-check me-1"></i> Submit Project
+      </button>
+    </form>
+  </div>
+</div>
