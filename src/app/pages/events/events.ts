@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Master } from '../../services/master';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-events',
-  imports: [FormsModule, DatePipe],
+  imports: [FormsModule, DatePipe, RouterLink],
   templateUrl: './events.html',
   styleUrl: './events.css',
 })

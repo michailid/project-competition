@@ -26,7 +26,10 @@ export class RegisterEvent {
   });
 
   constructor(private activatedRoute: ActivatedRoute) {
-    activatedRoute.params.subscribe((res: any) => {
+    // when a project is submitted,
+    // set as competition id the id in the slug
+    // and as user id the id of the logged-in user
+    this.activatedRoute.params.subscribe((res: any) => {
       debugger;
       this.submissionForm.controls['competitionId'].setValue(res.id);
     });
@@ -40,6 +43,9 @@ export class RegisterEvent {
   }
 
   onSubmit() {
-    this.masterService.onSubmitProject()
+    const formValue = this.submissionForm.value;
+    this.masterService.onSubmitProject(formValue).subscribe((res: any) => {
+      alert('Registration Success');
+    });
   }
 }

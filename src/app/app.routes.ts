@@ -4,6 +4,7 @@ import { Register } from './pages/register/register';
 import { Events } from './pages/events/events';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { RegisterEvent } from './pages/register-event/register-event';
+import { ProjectSubmissions } from './pages/project-submissions/project-submissions';
 
 export const routes: Routes = [
   {
@@ -28,7 +29,11 @@ export const routes: Routes = [
     component: Dashboard,
   },
   {
-    path: 'project-submission/:id',
+    path: 'project-registration/:id',
     component: RegisterEvent,
+  },
+  {
+    path: 'submissions/:id',
+    component: ProjectSubmissions,
   },
 ];

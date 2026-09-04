@@ -9,26 +9,25 @@ import { Project } from '../model/project';
 })
 export class Master {
   $loginDone: Subject<void> = new Subject<void>();
+  apiURL: string = 'https://api.freeprojectapi.com/api/ProjectCompetition/';
 
   constructor(private http: HttpClient) {}
 
   onSaveCompetition(competitionObj: CompetitionModel) {
-    return this.http.post(
-      'https://api.freeprojectapi.com/api/ProjectCompetition/competition',
-      competitionObj,
-    );
-  }
-
-  getAllCompetitions() {
-    return this.http.get<CompetitionModel[]>(
-      'https://api.freeprojectapi.com/api/ProjectCompetition/GetAllCompetition',
-    );
+    return this.http.post(this.apiURL + 'competition', competitionObj);
   }
 
   onSubmitProject(projectObj: Project) {
-    return this.http.post(
-      'https://api.freeprojectapi.com/api/ProjectCompetition/project',
-      projectObj,
+    return this.http.post(this.apiURL + 'project', projectObj);
+  }
+
+  getAllCompetitions() {
+    return this.http.get<CompetitionModel[]>(`${this.apiURL}GetAllCompetition`);
+  }
+
+  getAllSubmissionsByCompetitionId(competitionId: number) {
+    return this.http.get<CompetitionModel[]>(
+      `${this.apiURL}project/byCompetition/${competitionId}`,
     );
   }
 }
